@@ -1,47 +1,63 @@
 <?php
 
-namespace Ablashimov\Container;
+namespace Ablashimov\Factory;
 
 
-use Webmozart\Assert\Assert;
-
-class Zavod
+class Plant
 {
+    /** @var string*/
     protected $president;
+
+    /** @var string */
     protected $director;
+
+    /** @var array*/
     protected $workshops = [];
 
 
     public function setPresident(string $president)
     {
         $this->president = $president;
+        
         return $this;
+    }
+
+    public function getPresidentName(): string
+    {
+        return $this->president;
     }
 
     public function hireDirector(string $director)
     {
         $this->director = $director;
+
         return $this;
     }
 
     public function dismissDirector()
     {
         $this->director = null;
+
         return $this;
     }
 
     public function addWorkshop(Workshop $workshop)
     {
-        Assert::keyNotExists($this->workshops, $workshop->getCode(), 'Цех с таким кодом уже есть ');
         $this->workshops[$workshop->getCode()] = $workshop;
+
         return $this;
     }
 
 
     public function removeWorkshop(Workshop $workshop)
     {
-        Assert::keyExists($this->workshops,$workshop->getCode(),'цех с таким кодом не найден');
         unset($this->workshops[$workshop->getCode()]);
+
         return $this;
+    }
+
+    public function getWorkshops(): array
+    {
+        return $this->workshops;
     }
 }

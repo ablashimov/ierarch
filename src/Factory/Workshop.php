@@ -1,41 +1,37 @@
 <?php
 
-namespace Ablashimov\Container;
+namespace Ablashimov\Factory;
 
 
 class Workshop
 {
+    /** @var int*/
     protected $code;
+
+    /** @var string */
     protected $name;
-    /**
-     * @var Chief
-     */
+
+    /**@var Chief*/
     protected $chief;
-    /**
-     * @var Worker[]
-     */
+
+    /** @var Worker[] */
     protected $workers = [];
 
-    /**
-     * @return string
-     */
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
 
     public function __construct(string $name, string $code)
     {
         $this->name = $name;
         $this->code = $code;
+    }
+
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getChief()
@@ -47,6 +43,7 @@ class Workshop
     {
         $this->chief = $chief;
         $chief->setWorkshop($this);
+
         return $this;
     }
 
@@ -54,20 +51,27 @@ class Workshop
     {
         $this->chief->setWorkshop(null);
         $this->chief = null;
+
         return $this;
     }
 
     public function addWorker(Worker $worker)
     {
-        $this->workers[$worker->getTableNum()]=$worker;
+        $this->workers[$worker->getTableNumber()]=$worker;
         $worker->setWorkshop($this);
+
         return $this;
     }
 
     public function removeWorker(Worker $worker)
     {
         $worker->setWorkshop(null);
-        unset($this->workers[$worker->getTableNum()]);
+        unset($this->workers[$worker->getTableNumber()]);
 
     }
+    public function getWorkers(): array
+    {
+        return $this->workers;
+    }
+ 
 }
