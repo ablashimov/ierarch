@@ -1,0 +1,25 @@
+{
+  "name": "group1-16/ablashimov",
+  "authors": [
+    {
+      "name": "ablashimov",
+      "email": "vlad30101991@gmail.com"
+    }
+  ],
+  "require": {
+    "kint-php/kint": "^2.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ablashimov\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
