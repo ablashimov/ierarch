@@ -5,33 +5,30 @@ namespace Ablashimov\Factory;
 
 class Plant
 {
-    /** @var string*/
+    /** @var string */
     protected $president;
 
     /** @var string */
     protected $director;
 
-    /** @var array*/
+    /** @var array */
     protected $workshops = [];
 
 
-    public function setPresident(string $president)
+    public function __construct(string $president, string $director)
     {
         $this->president = $president;
-        
-        return $this;
+        $this->director = $director;
     }
 
-    public function getPresidentName(): string
+    public function getPresident(): string
     {
         return $this->president;
     }
 
-    public function hireDirector(string $director)
+    public function getDirector(): string
     {
-        $this->director = $director;
-
-        return $this;
+        return $this->director;        
     }
 
     public function dismissDirector()

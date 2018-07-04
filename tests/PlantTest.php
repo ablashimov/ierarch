@@ -11,17 +11,20 @@ class PlantTest extends TestCase
     /** @test */
     public function test_president_name()
     {
-        $name = 'Efimov';
+        $presidentName = 'Efimov';
+        $directorName = 'selytin';
+        $plant = new Plant($presidentName, $directorName);
 
-        $president = new Plant();
-        $president->setPresident($name);
+        $this->assertSame($presidentName, $plant->getPresident());
 
-        $this->assertSame($name, $president->getPresidentName());
+        $this->assertSame($directorName, $plant->getDirector());
     }
 
     public function test_add_workshop()
     {
-        $plant = new Plant();
+        $presidentName = 'Efimov';
+        $directorName = 'selytin';
+        $plant = new Plant($presidentName, $directorName);
         $workshop = new Workshop('cmo',123);
 
         $this->assertCount(0, $plant->getWorkshops());
@@ -32,7 +35,9 @@ class PlantTest extends TestCase
 
     public function test_remove_workshop()
     {
-        $plant = new Plant();
+        $presidentName = 'Efimov';
+        $directorName = 'selytin';
+        $plant = new Plant($presidentName, $directorName);
         $workshop = new Workshop('cmo',123);
 
         $this->assertCount(0, $plant->getWorkshops());

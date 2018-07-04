@@ -14,10 +14,7 @@ class Worker
     /** @var Workshop */
     protected $workshop;
 
-    /** @var $chief */
-    protected $chief;
-
-    public function __construct(string $name,int $tableNumber)
+    public function __construct(string $name, int $tableNumber)
     {
         $this->name = $name;
         $this->tableNumber = $tableNumber;
@@ -34,7 +31,7 @@ class Worker
     }
 
  
-    public function getWorkshop(): Workshop
+    public function getWorkshop(): ?Workshop
     {
         return $this->workshop;
     }

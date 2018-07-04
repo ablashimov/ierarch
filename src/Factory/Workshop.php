@@ -5,13 +5,13 @@ namespace Ablashimov\Factory;
 
 class Workshop
 {
-    /** @var int*/
+    /** @var int */
     protected $code;
 
     /** @var string */
     protected $name;
 
-    /**@var Chief*/
+    /** @var Chief */
     protected $chief;
 
     /** @var Worker[] */
@@ -67,8 +67,8 @@ class Workshop
     {
         $worker->setWorkshop(null);
         unset($this->workers[$worker->getTableNumber()]);
-
     }
+    
     public function getWorkers(): array
     {
         return $this->workers;
