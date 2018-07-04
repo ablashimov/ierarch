@@ -5,26 +5,19 @@ namespace Ablashimov\Factory;
 
 class Chief extends Worker
 {
-    /** @var array*/
-    protected $workers=[];
 
-    public function addWorker(Worker $worker)
+    public function hireWorker(Worker $worker)
     {
-        $this->workers[$worker->getTableNumber()]=$worker;
-        $worker->setChief($this);
+        $worker->setWorkshop($this->getWorkshop());
+        $this->getWorkshop()->addWorker($worker);
 
         return $this;
-    }
+   }
 
-    public function removeWorker(Worker $worker)
+    public function dismissWorker(Worker $worker)
     {
-        $worker->setChief(null);
-        unset($this->workers[$worker->getTableNumber()]);
-    }
+        $this->workshop->removeWorker($worker);
 
-    public function getWorkers(): array
-    {
-        return $this->workers;
-    }
-
+        return $this;
+   }
 }

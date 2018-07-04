@@ -45,17 +45,4 @@ class Worker
 
         return $this;
     }
-
-    public function getChief(): Chief
-    {
-        return $this->chief;
-    }
-
-    public function setChief($chief): Worker
-    {
-        $this->chief = $chief;
-
-        return $this;
-    }
-
 }

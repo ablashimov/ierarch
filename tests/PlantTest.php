@@ -28,6 +28,17 @@ class PlantTest extends TestCase
 
         $plant->addWorkshop($workshop);
         $this->assertCount(1, $plant->getWorkshops());
+    }
+
+    public function test_remove_workshop()
+    {
+        $plant = new Plant();
+        $workshop = new Workshop('cmo',123);
+
+        $this->assertCount(0, $plant->getWorkshops());
+
+        $plant->addWorkshop($workshop);
+        $this->assertCount(1, $plant->getWorkshops());
 
         $plant->removeWorkshop($workshop);
         $this->assertCount(0, $plant->getWorkshops());
